@@ -7,36 +7,60 @@ public class CryptCommand
 {
 	public static void main(String[] args) throws IOException
 	{
+		//bools
+		boolean e = false;
+		boolean d = false;
+		boolean g = false;
+		boolean r = false;
+		boolean h = false;
+		//seBool
 		try
 		{
 			if(args[0].equals("/e"))
 			{
-				EncryptFile.encryptFile(args[1], args[2], args[3]);
+				e = true;
 			}
 			else if(args[0].equals("/d"))
 			{
-				DecryptFile.decryptFile(args[1], args[2], args[3]);
+				d = true;
 			}
 			else if(args[0].equals("/g"))
 			{
-				GenKey.genKey(args[1], args[2], Integer.parseInt(args[3]));
+				g = true;
 			}
 			else if(args[0].equals("/r"))
 			{
-				RemKey.remKey(args[1]);
+				r = true;
 			}
 			else if(args[0].equals("/?") || args[0].equals("/h"))
 			{
-				Help.help();
-			}
-			else 
-			{
-				System.out.println("Invalid Paramaters\nTry with /?");
+				h = true;
 			}
 		}
 		catch(Exception ArrayIndexOutOfBoundsException)
 		{
-			System.out.println("Try with /?");
+			System.out.println("Invalid Paramaters\nTry with /?");
+		}
+		//runWithErrors
+		if(e)
+		{
+			EncryptFile.encryptFile(args[1], args[2], args[3]);
+		}
+		else if(d)
+		{
+			DecryptFile.decryptFile(args[1], args[2], args[3]);
+		}
+		else if(g)
+		{
+			GenKey.genKey(args[1], args[2], Integer.parseInt(args[3]));
+		}
+		else if(r)
+		{
+			RemKey.remKey(args[1]);
+		}
+		else if(h)
+		{
+			Help.help();
 		}
 	}
 }

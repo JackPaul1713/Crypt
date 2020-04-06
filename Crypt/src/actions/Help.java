@@ -11,6 +11,7 @@ public class Help
 		System.out.println("   /d - Decrypts files, crypt /d [path] [keyName] [password]");
 		System.out.println("   /g - Generates key, crypt /g [name] [password] [size]");
 		System.out.println("   /r - Removes key, crypt /r [name]");
-		//System.out.println("*CRYPT_KEYS enviroment variable must be set*");
+		System.out.println("");
+		System.out.println("*CRYPT_KEYS enviroment variable must be set*");
 	}
 }
