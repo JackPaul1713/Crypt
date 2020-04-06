@@ -24,9 +24,9 @@ public class GenKey
 		//var
 		int[] biteKey = new int[size];
 		//generate
-		for(int b: biteKey)
+		for(int i = 0; i < size; i++)
 		{
-			b = (int) (Math.random() * 256);
+			biteKey[i] = (int) (Math.random() * 255 + 1);
 		}
 		//ret
 		return(biteKey);

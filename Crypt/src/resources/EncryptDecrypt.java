@@ -11,7 +11,7 @@ public class EncryptDecrypt
 		//encrypt
 		for(int i = 0; i < bites.length; i++)
 		{
-			bites[i] += (biteKey[i % biteKey.length]);
+			bites[i] += biteKey[i % biteKey.length];
 		}
 		//ret
 		return(bites);

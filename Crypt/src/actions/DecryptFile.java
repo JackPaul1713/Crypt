@@ -6,7 +6,7 @@ import resources.Data;
 import resources.EncryptDecrypt;
 import resources.ReadWrite;
 
-public class Decrypt
+public class DecryptFile
 {
 	public static void decryptFile(String path, String keyName, String pw) throws IOException
 	{
@@ -16,6 +16,12 @@ public class Decrypt
 		int[] biteKey = EncryptDecrypt.decryptKey(enKey, pw);
 		//encrypt
 		bites = EncryptDecrypt.decryptBin(bites, biteKey);
+		for(int b: bites)
+		{
+			System.out.print(b + " ");
+		}
+		System.out.println("\nDe Bytes^");
+		ReadWrite.owriteLine(path, "");
 		ReadWrite.writeBinFile(path, bites);
 	}
 }
