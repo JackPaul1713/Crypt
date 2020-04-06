@@ -3,12 +3,12 @@ package actions;
 import resources.Data;
 import resources.FileMakeDelete;
 
-public class DelKey
+public class RemKey
 {
-	//delKey
-	public static void delKey(String name)
+	//remKey
+	public static void remKey(String name)
 	{
-		//del
+		//rem
 		FileMakeDelete.delFile(Data.LOC + name);
 	}
 }

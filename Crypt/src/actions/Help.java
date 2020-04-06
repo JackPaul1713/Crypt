@@ -4,6 +4,12 @@ public class Help
 {
 	public static void help()
 	{
-		System.out.println("This is normaly were I would explain how to use the Crypt command but I don't feel like it rn...");
+		System.out.println("The syntax of the command is as follows:");
+		System.out.println("Crypt [/action] {args[]}");
+		System.out.println("/e - Encrypts files, crypt /e [path] [keyName] [password]");
+		System.out.println("/d - Decrypts files, crypt /d [path] [keyName] [password]");
+		System.out.println("/g - Generates key, crypt /g [name] [password] [size]");
+		System.out.println("/r - Removes key, crypt /r [name]");
+		System.out.println("*CRYPT_KEYS enviroment variable must be set*");
 	}
 }
