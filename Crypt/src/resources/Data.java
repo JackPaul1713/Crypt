@@ -2,7 +2,7 @@ package resources;
 
 public class Data
 {
-	public static final String LOC = "C:\\Users\\JackPaul\\Desktop\\";//"%CRYPT_KEYS%\\";
+	public static final String LOC = "%CRYPT_KEYS%\\";
 	public static final int[] NUMBKEYS = 
 		{
 			1, 2, 3, 4, 5, 
