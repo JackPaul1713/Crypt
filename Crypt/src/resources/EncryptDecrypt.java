@@ -31,6 +31,7 @@ public class EncryptDecrypt
 		return(bites);
 	}
 	
+	//encryptDecryptPw
 	//encryptDecryptKey
 	public static String encryptKey(int[] biteKey, String pw)
 	{

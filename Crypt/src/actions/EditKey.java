@@ -9,7 +9,7 @@ import resources.Data;
 
 public class EditKey
 {
-	//genKey
+	//genKey ADD: encrypt password with key and write it to file as a check for proper password
 	public static void genKey(String name, String pw, int size) throws IOException
 	{
 		int[] biteKey = genByteKey(size);

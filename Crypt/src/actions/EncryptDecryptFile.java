@@ -8,7 +8,7 @@ import resources.ReadWrite;
 
 public class EncryptDecryptFile
 {
-	//encryptDecrypt
+	//encryptDecrypt ADD: check for properly encrypted pw
 	public static void encryptFile(String path, String keyName, String pw) throws IOException
 	{
 		//var
