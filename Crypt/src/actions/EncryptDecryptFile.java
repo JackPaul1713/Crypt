@@ -37,9 +37,9 @@ public class EncryptDecryptFile
 	//setPath
 	private static String setPath(String path)
 	{
-		if(!path.substring(0, 2).equals("C:\\"))
+		if(!path.contains("\\"))
 		{
-			path = System.getenv("CD") + "\\" + path;
+			path = "%CD%\\" + path;
 		}
 		return(path);
 	}
