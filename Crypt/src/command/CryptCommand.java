@@ -44,19 +44,19 @@ public class CryptCommand
 		//runWithErrors
 		if(e)
 		{
-			EncryptFile.encryptFile(args[1], args[2], args[3]);
+			EncryptDecryptFile.encryptFile(args[1], args[2], args[3]);
 		}
 		else if(d)
 		{
-			DecryptFile.decryptFile(args[1], args[2], args[3]);
+			EncryptDecryptFile.decryptFile(args[1], args[2], args[3]);
 		}
 		else if(g)
 		{
-			GenKey.genKey(args[1], args[2], Integer.parseInt(args[3]));
+			EditKey.genKey(args[1], args[2], Integer.parseInt(args[3]));
 		}
 		else if(r)
 		{
-			RemKey.remKey(args[1]);
+			EditKey.remKey(args[1]);
 		}
 		else if(h)
 		{
