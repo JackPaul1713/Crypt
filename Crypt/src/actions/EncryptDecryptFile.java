@@ -1,7 +1,9 @@
 package actions;
 
+import java.io.File;
 import java.io.IOException;
 
+import resources.Converstions;
 import resources.Data;
 import resources.EncryptDecrypt;
 import resources.ReadWrite;
@@ -14,32 +16,54 @@ public class EncryptDecryptFile
 		//var
 		path = setPath(path);
 		String enKey = ReadWrite.readLine(Data.LOC + keyName);
+		String enPwCheck = ReadWrite.readLine(Data.LOC + keyName);
 		int[] bites = ReadWrite.readBinFile(path);
 		int[] biteKey = EncryptDecrypt.decryptKey(enKey, pw);
+		String pwCheck;
+		//check
+		pwCheck = Converstions.getStr(EncryptDecrypt.decryptBin(Converstions.getBytes(enPwCheck), biteKey));
 		//encrypt
-		bites = EncryptDecrypt.encryptBin(bites, biteKey);
-		ReadWrite.owriteLine(path, "");
-		ReadWrite.writeBinFile(path, bites);
+		if(pwCheck.contains(pw))
+		{
+			bites = EncryptDecrypt.encryptBin(bites, biteKey);
+			ReadWrite.owriteLine(path, "");
+			ReadWrite.writeBinFile(path, bites);
+		}
+		else
+		{
+			System.out.println("Invalid password");
+		}
 	}
 	public static void decryptFile(String path, String keyName, String pw) throws IOException
 	{
 		//var
 		path = setPath(path);
 		String enKey = ReadWrite.readLine(Data.LOC + keyName);
+		String enPwCheck = ReadWrite.readLine(Data.LOC + keyName);
 		int[] bites = ReadWrite.readBinFile(path);
 		int[] biteKey = EncryptDecrypt.decryptKey(enKey, pw);
-		//encrypt
-		bites = EncryptDecrypt.decryptBin(bites, biteKey);
-		ReadWrite.owriteLine(path, "");
-		ReadWrite.writeBinFile(path, bites);
+		String pwCheck;
+		//check
+		pwCheck = Converstions.getStr(EncryptDecrypt.decryptBin(Converstions.getBytes(enPwCheck), biteKey));
+		//decrypt
+		if(pwCheck.contains(pw))
+		{
+			bites = EncryptDecrypt.decryptBin(bites, biteKey);
+			ReadWrite.owriteLine(path, "");
+			ReadWrite.writeBinFile(path, bites);
+		}
+		else
+		{
+			System.out.println("Invalid password");
+		}
 	}
 	
-	//setPath
+	//resources
 	private static String setPath(String path)
 	{
 		if(!path.contains("\\"))
 		{
-			path = "%CD%\\" + path;
+			path = System.getProperty("user.dir") + "\\" + path;
 		}
 		return(path);
 	}

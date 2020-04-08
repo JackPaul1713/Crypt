@@ -31,14 +31,13 @@ public class EncryptDecrypt
 		return(bites);
 	}
 	
-	//encryptDecryptPw
 	//encryptDecryptKey
 	public static String encryptKey(int[] biteKey, String pw)
 	{
 		//var
 		String enKey;
 		BigInteger numbKey = combineInts(biteKey);
-		BigInteger numbPw = combineInts(getNumbs(pw));
+		BigInteger numbPw = combineInts(Converstions.getNumbs(pw));
 		BigInteger invNumbPw = invertBigInt(numbPw);
 		BigInteger numbEnKey;
 		//encrypt
@@ -53,7 +52,7 @@ public class EncryptDecrypt
 		//var
 		BigInteger numbKey;
 		BigInteger numbEnKey = new BigInteger(enKey);
-		BigInteger numbPw = combineInts(getNumbs(pw));
+		BigInteger numbPw = combineInts(Converstions.getNumbs(pw));
 		BigInteger invNumbPw = invertBigInt(numbPw);
 		int[] biteKey;
 		//encrypt
@@ -66,25 +65,6 @@ public class EncryptDecrypt
 	}
 	
 	//resources
-	private static int[] getNumbs(String str)
-	{
-		//var
-		String[] letts = str.split("");
-		int[] numbs = new int[letts.length];
-		//switch
-		for(int l = 0; l < letts.length; l++)
-		{
-			for(int a = 0; a < Data.SYMBKEYS.length; a++)
-			{
-				if(letts[l].equals(Data.SYMBKEYS[a]))
-				{
-					numbs[l] = Data.NUMBKEYS[a];
-				}
-			}
-		}
-		//ret
-		return(numbs);
-	}
 	private static BigInteger combineInts(int[] numbs)
 	{
 		//var
@@ -144,5 +124,4 @@ public class EncryptDecrypt
 		//ret
 		return(numbPw);
 	}
-	
 }
