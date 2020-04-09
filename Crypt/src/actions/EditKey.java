@@ -32,6 +32,12 @@ public class EditKey
 		//rem
 		FileMakeDelete.delFile(Data.LOC + name);
 	}
+//	public static void testKey(String name, String password)
+//	{
+//		//getVar
+//		String enBiteKey = ReadWrite.readLine(fileName);
+//		String enBufPw = ReadWrite.readLine(fileName);
+//	}
 	
 	//dispKeys
 	public static void dispKeys()

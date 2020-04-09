@@ -21,6 +21,18 @@ public class ReadWrite
 		br.close();
 		return(line);
 	}
+	public static String readLine(String fileName, int lineNumb) throws IOException
+	{
+		BufferedReader br = new BufferedReader(new FileReader(fileName));
+		String line = "";
+		while(lineNumb > 0)
+		{
+			line = br.readLine();
+			lineNumb--;
+		}
+		br.close();
+		return(line);
+	}
 	
 	public static void owriteLine(String fileName, String line) throws IOException
 	{

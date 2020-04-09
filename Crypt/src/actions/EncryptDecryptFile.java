@@ -17,7 +17,7 @@ public class EncryptDecryptFile
 		//var
 		path = setPath(path);
 		String enKey = ReadWrite.readLine(Data.LOC + keyName);
-		String enPwCheck = ReadWrite.readLine(Data.LOC + keyName);
+		String enPwCheck = ReadWrite.readLine(Data.LOC + keyName, 2);
 		int[] bites = ReadWrite.readBinFile(path);
 		int[] biteKey = EncryptDecrypt.decryptKey(enKey, pw);
 		String pwCheck;
@@ -45,7 +45,7 @@ public class EncryptDecryptFile
 		//var
 		path = setPath(path);
 		String enKey = ReadWrite.readLine(Data.LOC + keyName);
-		String enPwCheck = ReadWrite.readLine(Data.LOC + keyName);
+		String enPwCheck = ReadWrite.readLine(Data.LOC + keyName, 2);
 		int[] bites = ReadWrite.readBinFile(path);
 		int[] biteKey = EncryptDecrypt.decryptKey(enKey, pw);
 		String pwCheck;
