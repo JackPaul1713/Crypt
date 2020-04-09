@@ -36,6 +36,10 @@ public class CryptCommand
 			{
 				Help.help();
 			}
+			else 
+			{
+				args[999] = "";
+			}
 		}
 		catch(Exception ArrayIndexOutOfBoundsException)
 		{
