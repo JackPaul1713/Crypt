@@ -7,6 +7,8 @@ public class CryptCommand
 {
 	public static void main(String[] args) throws IOException
 	{
+		String[] arg = new String[] {"/g", "TestKey.txt", "password", "64"};
+		//String[] arg = new String[] {"/e", "Test.txt", "Testkey.txt", "password"};
 		//bools
 		boolean e = false;
 		boolean d = false;
@@ -14,32 +16,32 @@ public class CryptCommand
 		boolean r = false;
 		boolean h = false;
 		//seBool
-		try
-		{
-			if(args[0].equals("/e"))
+		//try
+		//{
+			if(arg[0].equals("/e"))
 			{
-				EncryptDecryptFile.encryptFile(args[1], args[2], args[3]);
+				EncryptDecryptFile.encryptFile(arg[1], arg[2], arg[3]);
 			}
-			else if(args[0].equals("/d"))
+			else if(arg[0].equals("/d"))
 			{
-				EncryptDecryptFile.decryptFile(args[1], args[2], args[3]);
+				EncryptDecryptFile.decryptFile(arg[1], arg[2], arg[3]);
 			}
-			else if(args[0].equals("/g"))
+			else if(arg[0].equals("/g"))
 			{
-				EditKey.genKey(args[1], args[2], Integer.parseInt(args[3]));
+				EditKey.genKey(arg[1], arg[2], Integer.parseInt(arg[3]));
 			}
-			else if(args[0].equals("/r"))
+			else if(arg[0].equals("/r"))
 			{
-				EditKey.remKey(args[1]);
+				EditKey.remKey(arg[1]);
 			}
-			else if(args[0].equals("/?") || args[0].equals("/h"))
+			else if(arg[0].equals("/?") || arg[0].equals("/h"))
 			{
 				Help.help();
 			}
-		}
-		catch(Exception ArrayIndexOutOfBoundsException)
-		{
-			System.out.println("Invalid Paramaters\nTry with /?");
-		}
+		//}
+		//catch(Exception ArrayIndexOutOfBoundsException)
+		//{
+		//	System.out.println("Invalid Paramaters\nTry with /?");
+		//}
 	}
 }

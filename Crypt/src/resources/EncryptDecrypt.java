@@ -12,6 +12,10 @@ public class EncryptDecrypt
 		for(int i = 0; i < bites.length; i++)
 		{
 			bites[i] += biteKey[i % biteKey.length];
+			while(bites[i] > 255)
+			{
+				bites[i] = bites[i] - 256;
+			}
 		}
 		//ret
 		return(bites);
@@ -36,8 +40,8 @@ public class EncryptDecrypt
 	{
 		//var
 		String enKey;
-		BigInteger numbKey = combineInts(biteKey);
-		BigInteger numbPw = combineInts(Converstions.getNumbs(pw));
+		BigInteger numbKey = Converstions.combineInts(biteKey);
+		BigInteger numbPw = Converstions.combineInts(Converstions.getBytes(pw));
 		BigInteger invNumbPw = invertBigInt(numbPw);
 		BigInteger numbEnKey;
 		//encrypt
@@ -52,64 +56,19 @@ public class EncryptDecrypt
 		//var
 		BigInteger numbKey;
 		BigInteger numbEnKey = new BigInteger(enKey);
-		BigInteger numbPw = combineInts(Converstions.getNumbs(pw));
+		BigInteger numbPw = Converstions.combineInts(Converstions.getBytes(pw));
 		BigInteger invNumbPw = invertBigInt(numbPw);
 		int[] biteKey;
 		//encrypt
 		numbKey = numbEnKey.subtract(invNumbPw);
 		numbKey = numbKey.divide(numbPw);
 		//format
-		biteKey = splitBigInt(numbKey);
+		biteKey = Converstions.splitBigInt(numbKey);
 		//ret
 		return(biteKey);
 	}
 	
 	//resources
-	private static BigInteger combineInts(int[] numbs)
-	{
-		//var
-		String temp;
-		String strNumb = "";
-		BigInteger bigInt;
-		//combine
-		for(int n = 0; n < numbs.length; n++)
-		{
-			bigInt = BigInteger.valueOf(Long.valueOf(numbs[n]));
-			temp = bigInt.toString();
-			if(temp.length() == 1)
-			{
-				temp = "00" + temp;
-			}
-			else if(temp.length() == 2)
-			{
-				temp = "0" + temp;
-			}
-			strNumb += temp;
-		}
-		//ret
-		return(new BigInteger(strNumb));
-	}
-	private static int[] splitBigInt(BigInteger numb)
-	{
-		//var
-		String strNumb = numb.toString();
-		int[] numbs;
-		int length;
-		//split
-		while(strNumb.length() % 3 != 0)
-		{
-			strNumb = "0" + strNumb;
-		}
-		numbs = new int[strNumb.length()/3];
-		length = strNumb.length();
-		for(int n = 0; n < length/3; n++)
-		{
-			numbs[n] = Integer.parseInt(strNumb.substring(0, 3));
-			strNumb = strNumb.substring(3, strNumb.length());
-		}
-		//ret
-		return(numbs);
-	}
 	private static BigInteger invertBigInt(BigInteger numbPw)
 	{
 		//var

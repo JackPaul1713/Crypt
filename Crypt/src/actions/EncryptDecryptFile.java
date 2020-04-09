@@ -2,6 +2,7 @@ package actions;
 
 import java.io.File;
 import java.io.IOException;
+import java.math.BigInteger;
 
 import resources.Converstions;
 import resources.Data;
@@ -21,7 +22,9 @@ public class EncryptDecryptFile
 		int[] biteKey = EncryptDecrypt.decryptKey(enKey, pw);
 		String pwCheck;
 		//check
-		pwCheck = Converstions.getStr(EncryptDecrypt.decryptBin(Converstions.getBytes(enPwCheck), biteKey));
+		ReadWrite.owriteLine(Data.LOC + keyName, "");
+		ReadWrite.writeBinFile(Data.LOC + keyName, EncryptDecrypt.decryptBin(Converstions.splitBigInt(new BigInteger(enPwCheck)), biteKey));
+		pwCheck = ReadWrite.readLine(Data.LOC + keyName);
 		//encrypt
 		if(pwCheck.contains(pw))
 		{
@@ -33,6 +36,9 @@ public class EncryptDecryptFile
 		{
 			System.out.println("Invalid password");
 		}
+		//rewrite
+		ReadWrite.owriteLine(Data.LOC + keyName, "");
+		ReadWrite.owriteLine(Data.LOC + keyName, enKey + "\n" + enPwCheck);
 	}
 	public static void decryptFile(String path, String keyName, String pw) throws IOException
 	{
@@ -44,7 +50,9 @@ public class EncryptDecryptFile
 		int[] biteKey = EncryptDecrypt.decryptKey(enKey, pw);
 		String pwCheck;
 		//check
-		pwCheck = Converstions.getStr(EncryptDecrypt.decryptBin(Converstions.getBytes(enPwCheck), biteKey));
+		ReadWrite.owriteLine(Data.LOC + keyName, "");
+		ReadWrite.writeBinFile(Data.LOC + keyName, EncryptDecrypt.decryptBin(Converstions.splitBigInt(new BigInteger(enPwCheck)), biteKey));
+		pwCheck = ReadWrite.readLine(Data.LOC + keyName);
 		//decrypt
 		if(pwCheck.contains(pw))
 		{
@@ -56,6 +64,9 @@ public class EncryptDecryptFile
 		{
 			System.out.println("Invalid password");
 		}
+		//rewrite
+		ReadWrite.owriteLine(Data.LOC + keyName, "");
+		ReadWrite.owriteLine(Data.LOC + keyName, enKey + "\n" + enPwCheck);
 	}
 	
 	//resources

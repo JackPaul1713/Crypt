@@ -1,6 +1,7 @@
 package actions;
 
 import java.io.IOException;
+import java.math.BigInteger;
 
 import resources.EncryptDecrypt;
 import resources.FileMakeDelete;
@@ -13,13 +14,15 @@ public class EditKey
 	//genRemKey ADD: encrypt password with key and write it to file as a check for proper password
 	public static void genKey(String name, String pw, int size) throws IOException
 	{
+		//makeFile
+		FileMakeDelete.makeFile(Data.LOC + name);
 		//genKey
 		int[] biteKey = genByteKey(size);
 		String key = EncryptDecrypt.encryptKey(biteKey, pw);
 		//genPwCheck
-		String pwCheck = Converstions.getStr(EncryptDecrypt.encryptBin(genBitePwCheck(pw), biteKey));
-		//genFile
-		FileMakeDelete.makeFile(Data.LOC + name);
+		ReadWrite.owriteLine(Data.LOC + name, buffPw(pw));
+		String pwCheck = combineInts(EncryptDecrypt.encryptBin(ReadWrite.readBinFile(Data.LOC + name), biteKey));
+		//fillFile
 		ReadWrite.owriteLine(Data.LOC + name, key + "\n" + pwCheck);
 	}
 	public static void remKey(String name) throws IOException
@@ -44,52 +47,58 @@ public class EditKey
 		//generate
 		for(int i = 0; i < size; i++)
 		{
-			biteKey[i] = (int) (Math.random() * 255 + 1);
+			biteKey[i] = (int) (Math.random() * 256 + 1);
 		}
 		//ret
 		return(biteKey);
 	}
-	private static int[] genBitePwCheck(String pw)
-	{
-		int[] bites = bufferBytes(getBytes(pw));
-		return(bites);
-	}
+//	private static int[] genBitePwCheck(String pw)
+//	{
+//		String buffPw = buffPw(pw);
+//		int[] bites = Converstions.getBytes(buffPw);
+//		return(bites);
+//	}
 	
 	//resources
-	private static int[] getBytes(String str)
+	private static String combineInts(int[] numbs)
 	{
 		//var
-		byte[] bites = str.getBytes();
-		int[] intBites = new int[bites.length];
-		//convert
-		for(int i = 0; i < bites.length; i++)
+		String temp;
+		String strNumb = "";
+		BigInteger bigInt;
+		//combine
+		for(int n = 0; n < numbs.length; n++)
 		{
-			intBites[i] = bites[i] & 0xFF;
-		}
-		return(intBites);
-	}
-	private static int[] bufferBytes(int[] bites)
-	{
-		//var
-		int prev = (int) (Math.random() * 21);
-		int post = (int) (Math.random() * 21);
-		int[] bufBites = new int[prev + bites.length + post];
-		//fillPrev
-		for(int i = 0; i < prev; i++)
-		{
-			bufBites[i] = (int) (Math.random() * 255 + 1);
-		}
-		//fillBites
-		for(int i = 0; i < bites.length; i++)
-		{
-			bufBites[i + prev] = bites[i];
-		}
-		//fillPost
-		for(int i = 0; i < post; i++)
-		{
-			bufBites[i + prev + bites.length] = (int) (Math.random() * 255 + 1);
+			bigInt = BigInteger.valueOf(Long.valueOf(numbs[n]));
+			temp = bigInt.toString();
+			if(temp.length() == 1)
+			{
+				temp = "00" + temp;
+			}
+			else if(temp.length() == 2)
+			{
+				temp = "0" + temp;
+			}
+			strNumb += temp;
 		}
 		//ret
-		return(bufBites);
+		return(strNumb);
+	}
+	private static String buffPw(String pw)
+	{
+		String buffPw = genRandomStr(21) + pw + genRandomStr(21);
+		return(buffPw);
+	}
+	private static String genRandomStr(int len)
+	{
+		final String SYMKEYS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijlmnopqrstuvwxyz1234567890+/";//!@#$%^&*()_+-[]{}|;:',<.>/?\"\\`~";
+		String randomStr = "";
+		int random;
+		for(int l = 0; l < len; l++)
+		{
+			random = (int) (Math.random() * (SYMKEYS.length()-1));
+			randomStr += SYMKEYS.substring(random, random + 1);
+		}
+		return(randomStr);
 	}
 }
