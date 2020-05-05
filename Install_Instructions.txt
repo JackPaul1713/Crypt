@@ -1,0 +1,6 @@
+Install Instructions
+
+1. Fork the crypt repository
+2. Export as a runnable jar file
+3. Make an exe file with launch j4 useing the jar file
+4. Run the install .bat file
