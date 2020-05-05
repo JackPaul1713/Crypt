@@ -9,23 +9,7 @@ public class CryptCommand
 {
 	public static void main(String[] args) throws IOException
 	{
-		String testPw = "!@#$%^&*()qwertyuiopQWERTYUIOP{}ASDFGHJKL:\\\"ZXCVBNV<>!@#$%^&*()qwertyuiopQWERTYUIOP{}ASDFGHJKL:\\\\\\\"ZXCVBNV<>!@#$%^&*()qwertyuiopQWERTYUIOP{}ASDFGHJKL:\\\\\\\"ZXCVBNV<>!@#$%^&*()qwertyuiopQWERTYUIOP{}ASDFGHJKL:\\\\\\\"ZXCVBNV<>!@#$%^&*()qwertyuiopQWERTYUIOP{}ASDFGHJKL:\\\\\\\"ZXCVBNV<>!@#$%^&*()qwertyuiopQWERTYUIOP{}ASDFGHJKL:\\\\\\\"ZXCVBNV<>!@#$%^&*()qwertyuiopQWERTYUIOP{}ASDFGHJKL:\\\\\\\"ZXCVBNV<>!@#$%^&*()qwertyuiopQWERTYUIOP{}ASDFGHJKL:\\\"ZXCVBNV<>!@#$%^&*()qwertyuiopQWERTYUIOP{}ASDFGHJKL:\\\\\\\"ZXCVBNV<>!@#$%^&*()qwertyuiopQWERTYUIOP{}ASDFGHJKL:\\\\\\\"ZXCVBNV<>!@#$%^&*()qwertyuiopQWERTYUIOP{}ASDFGHJKL:\\\\\\\"ZXCVBNV<>!@#$%^&*()qwertyuiopQWERTYUIOP{}ASDFGHJKL:\\\\\\\"ZXCVBNV<>!@#$%^&*()qwertyuiopQWERTYUIOP{}ASDFGHJKL:\\\\\\\"ZXCVBNV<>!@#$%^&*()qwertyuiopQWERTYUIOP{}ASDFGHJKL:\\\\\\\"ZXCVBNV<>!@#$%^&*()qwertyuiopQWERTYUIOP{}ASDFGHJKL:\\\"ZXCVBNV<>!@#$%^&*()qwertyuiopQWERTYUIOP{}ASDFGHJKL:\\\\\\\"ZXCVBNV<>!@#$%^&*()qwertyuiopQWERTYUIOP{}ASDFGHJKL:\\\\\\\"ZXCVBNV<>!@#$%^&*()qwertyuiopQWERTYUIOP{}ASDFGHJKL:\\\\\\\"ZXCVBNV<>!@#$%^&*()qwertyuiopQWERTYUIOP{}ASDFGHJKL:\\\\\\\"ZXCVBNV<>!@#$%^&*()qwertyuiopQWERTYUIOP{}ASDFGHJKL:\\\\\\\"ZXCVBNV<>!@#$%^&*()qwertyuiopQWERTYUIOP{}ASDFGHJKL:\\\\\\\"ZXCVBNV<>!@#$%^&*()qwertyuiopQWERTYUIOP{}ASDFGHJKL:\\\"ZXCVBNV<>!@#$%^&*()qwertyuiopQWERTYUIOP{}ASDFGHJKL:\\\\\\\"ZXCVBNV<>!@#$%^&*()qwertyuiopQWERTYUIOP{}ASDFGHJKL:\\\\\\\"ZXCVBNV<>!@#$%^&*()qwertyuiopQWERTYUIOP{}ASDFGHJKL:\\\\\\\"ZXCVBNV<>!@#$%^&*()qwertyuiopQWERTYUIOP{}ASDFGHJKL:\\\\\\\"ZXCVBNV<>!@#$%^&*()qwertyuiopQWERTYUIOP{}ASDFGHJKL:\\\\\\\"ZXCVBNV<>!@#$%^&*()qwertyuiopQWERTYUIOP{}ASDFGHJKL:\\\\\\\"ZXCVBNV<>!@#$%^&*()qwertyuiopQWERTYUIOP{}ASDFGHJKL:\\\"ZXCVBNV<>!@#$%^&*()qwertyuiopQWERTYUIOP{}ASDFGHJKL:\\\\\\\"ZXCVBNV<>!@#$%^&*()qwertyuiopQWERTYUIOP{}ASDFGHJKL:\\\\\\\"ZXCVBNV<>!@#$%^&*()qwertyuiopQWERTYUIOP{}ASDFGHJKL:\\\\\\\"ZXCVBNV<>!@#$%^&*()qwertyuiopQWERTYUIOP{}ASDFGHJKL:\\\\\\\"ZXCVBNV<>!@#$%^&*()qwertyuiopQWERTYUIOP{}ASDFGHJKL:\\\\\\\"ZXCVBNV<>!@#$%^&*()qwertyuiopQWERTYUIOP{}ASDFGHJKL:\\\\\\\"ZXCVBNV<>!@#$%^&*()qwertyuiopQWERTYUIOP{}ASDFGHJKL:\\\"ZXCVBNV<>!@#$%^&*()qwertyuiopQWERTYUIOP{}ASDFGHJKL:\\\\\\\"ZXCVBNV<>!@#$%^&*()qwertyuiopQWERTYUIOP{}ASDFGHJKL:\\\\\\\"ZXCVBNV<>!@#$%^&*()qwertyuiopQWERTYUIOP{}ASDFGHJKL:\\\\\\\"ZXCVBNV<>!@#$%^&*()qwertyuiopQWERTYUIOP{}ASDFGHJKL:\\\\\\\"ZXCVBNV<>!@#$%^&*()qwertyuiopQWERTYUIOP{}ASDFGHJKL:\\\\\\\"ZXCVBNV<>!@#$%^&*()qwertyuiopQWERTYUIOP{}ASDFGHJKL:\\\\\\\"ZXCVBNV<>!@#$%^&*()qwertyuiopQWERTYUIOP{}ASDFGHJKL:\"ZXCVBNV<>!@#$%^&*()qwertyuiopQWERTYUIOP{}ASDFGHJKL:\\\"ZXCVBNV<>!@#$%^&*()qwertyuiopQWERTYUIOP{}ASDFGHJKL:\\\"ZXCVBNV<>!@#$%^&*()qwertyuiopQWERTYUIOP{}ASDFGHJKL:\\\"ZXCVBNV<>!@#$%^&*()qwertyuiopQWERTYUIOP{}ASDFGHJKL:\\\"ZXCVBNV<>!@#$%^&*()qwertyuiopQWERTYUIOP{}ASDFGHJKL:\\\"ZXCVBNV<>!@#$%^&*()qwertyuiopQWERTYUIOP{}ASDFGHJKL:\\\"ZXCVBNV<>";
-		for (int i = 0; i < 1000; i++)
-		{
-			System.out.print("(" + (i+1) + ")");
-			EditKey.genKey("SuperCoolTestKey", testPw, 12);
-			EncryptDecryptFile.encryptFile("C:\\Users\\JackPaul\\Desktop\\Test.txt", "SuperCoolTestKey", testPw);
-			//System.out.println(ReadWrite.readLine("C:\\Users\\JackPaul\\Desktop\\Test.txt"));
-			EncryptDecryptFile.decryptFile("C:\\Users\\JackPaul\\Desktop\\Test.txt", "SuperCoolTestKey", testPw);
-			//System.out.println(ReadWrite.readLine("C:\\Users\\JackPaul\\Desktop\\Test.txt"));
-			if(ReadWrite.readLine("C:\\Users\\JackPaul\\Desktop\\Test.txt").equals("Hopefully this works."))
-				System.out.println("true");
-			else
-				System.out.println("FALSE!!!");
-			EditKey.remKey("SuperCoolTestKey");
-			testPw = testPw.substring(1);
-		}
-		/*//bools
+		//bools
 		boolean e = false;
 		boolean d = false;
 		boolean g = false;
@@ -62,6 +46,6 @@ public class CryptCommand
 		catch(Exception ArrayIndexOutOfBoundsException)
 		{
 			System.out.println("Invalid Paramaters\nTry with /?");
-		}*/
+		}
 	}
 }

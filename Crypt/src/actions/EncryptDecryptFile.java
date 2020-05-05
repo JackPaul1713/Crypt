@@ -20,6 +20,7 @@ public class EncryptDecryptFile
 		String enPwCheck = ReadWrite.readLine(Data.LOC + keyName, 2);
 		int[] bites = ReadWrite.readBinFile(path);
 		int[] biteKey = EncryptDecrypt.decryptKey(enKey, pw);
+		int[] sBiteKey = shortenKey(biteKey);
 		String pwCheck;
 		//check
 		ReadWrite.owriteLine(Data.LOC + keyName, "");
@@ -29,6 +30,7 @@ public class EncryptDecryptFile
 		if(pwCheck.contains(pw))
 		{
 			bites = EncryptDecrypt.encryptBin(bites, biteKey);
+			bites = EncryptDecrypt.encryptBin(bites, sBiteKey);
 			ReadWrite.owriteLine(path, "");
 			ReadWrite.writeBinFile(path, bites);
 		}
@@ -48,6 +50,7 @@ public class EncryptDecryptFile
 		String enPwCheck = ReadWrite.readLine(Data.LOC + keyName, 2);
 		int[] bites = ReadWrite.readBinFile(path);
 		int[] biteKey = EncryptDecrypt.decryptKey(enKey, pw);
+		int[] sBiteKey = shortenKey(biteKey);
 		String pwCheck;
 		//check
 		ReadWrite.owriteLine(Data.LOC + keyName, "");
@@ -56,6 +59,7 @@ public class EncryptDecryptFile
 		//decrypt
 		if(pwCheck.contains(pw))
 		{
+			bites = EncryptDecrypt.decryptBin(bites, sBiteKey);
 			bites = EncryptDecrypt.decryptBin(bites, biteKey);
 			ReadWrite.owriteLine(path, "");
 			ReadWrite.writeBinFile(path, bites);
@@ -77,5 +81,15 @@ public class EncryptDecryptFile
 			path = System.getProperty("user.dir") + "\\" + path;
 		}
 		return(path);
+	}
+	
+	private static int[] shortenKey(int[] biteKey)
+	{
+		int[] sBiteKey = new int[biteKey.length-2];
+		for(int i = 0; i < biteKey.length-2; i++)
+		{
+			sBiteKey[i] = biteKey[i];
+		}
+		return(sBiteKey);
 	}
 }
