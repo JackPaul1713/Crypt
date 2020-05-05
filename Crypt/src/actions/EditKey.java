@@ -52,12 +52,6 @@ public class EditKey
 		//ret
 		return(biteKey);
 	}
-//	private static int[] genBitePwCheck(String pw)
-//	{
-//		String buffPw = buffPw(pw);
-//		int[] bites = Converstions.getBytes(buffPw);
-//		return(bites);
-//	}
 	
 	//resources
 	private static String combineInts(int[] numbs)
@@ -91,7 +85,7 @@ public class EditKey
 	}
 	private static String genRandomStr(int len)
 	{
-		final String SYMKEYS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijlmnopqrstuvwxyz1234567890+/";//!@#$%^&*()_+-[]{}|;:',<.>/?\"\\`~";
+		final String SYMKEYS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijlmnopqrstuvwxyz1234567890+/!@#$%^&*()_+-[]{}|;:',<.>/?\"\\`~";
 		String randomStr = "";
 		int random;
 		for(int l = 0; l < len; l++)
