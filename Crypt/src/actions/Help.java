@@ -11,5 +11,6 @@ public class Help
 		System.out.println("   /d - Decrypts files, crypt /d [path] [keyName] [password]");
 		System.out.println("   /g - Generates key, crypt /g [name] [password] [size]");
 		System.out.println("   /r - Removes key, crypt /r [name]");
+		//System.out.println("   /? - Provides help, crypt /?");
 	}
 }

@@ -9,19 +9,24 @@ public class Converstions
 	//converstions
 	public static String getStr(int[] intBites)
 	{
+		//var
 		byte[] bites = new byte[intBites.length];
+		//convert
 		for(int i = 0; i < bites.length; i++)
 		{
 			bites[i] = (byte) intBites[i];
 		}
-		String str = Base64.getEncoder().encodeToString(bites);
+		//ret
+		String str = new String(bites, StandardCharsets.UTF_8);
 		return(str);
 	}
 	public static int[] getBytes(String str)
 	{
 		//var
-		byte[] bites = Base64.getDecoder().decode(str);
+		byte[] bites = str.getBytes();
 		int[] intBites = new int[bites.length];
+			//byte[] bites = Base64.getDecoder().decode(str);
+			//int[] intBites = new int[bites.length];
 		//convert
 		for(int i = 0; i < bites.length; i++)
 		{
