@@ -9,13 +9,7 @@ public class CryptCommand
 {
 	public static void main(String[] args) throws IOException
 	{
-		//bools
-		boolean e = false;
-		boolean d = false;
-		boolean g = false;
-		boolean r = false;
-		boolean h = false;
-		//seBool
+		//runCommands
 		try
 		{
 			if(args[0].equals("/e"))
@@ -33,6 +27,25 @@ public class CryptCommand
 			else if(args[0].equals("/r"))
 			{
 				EditKey.remKey(args[1]);
+			}
+			else if(args[0].equals("/c"))
+			{
+				if(args[2].equals("-n"))
+				{
+					EditKey.changeName(args[1], args[3]);
+				}
+				else if(args[2].equals("-p"))
+				{
+					EditKey.changePw(args[1], args[3], args[4]);
+				}
+				else
+				{
+					args[999] = "";
+				}
+			}
+			else if(args[0].equals("/l"))
+			{
+				EditKey.listKeys();
 			}
 			else if(args[0].equals("/?") || args[0].equals("/h"))
 			{

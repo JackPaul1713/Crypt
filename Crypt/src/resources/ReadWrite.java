@@ -42,7 +42,7 @@ public class ReadWrite
 	}
 	
 	//readWriteBin
-	public static int[] readBinFile(String fileName) throws IOException
+	public static int[] readFileBin(String fileName) throws IOException
 	{
 		//var
 		int bite;
@@ -62,7 +62,7 @@ public class ReadWrite
 		//ret
 		return(bites);
 	}
-	public static void writeBinFile(String fileName, int[]bites) throws IOException
+	public static void writeFileBin(String fileName, int[]bites) throws IOException
 	{
 		//var
         OutputStream outputStream = new FileOutputStream(fileName);

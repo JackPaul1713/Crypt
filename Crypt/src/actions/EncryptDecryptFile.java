@@ -16,61 +16,59 @@ public class EncryptDecryptFile
 	{
 		//var
 		path = setPath(path);
-		String enKey = ReadWrite.readLine(Data.LOC + keyName);
-		String enPwCheck = ReadWrite.readLine(Data.LOC + keyName, 2);
-		int[] bites = ReadWrite.readBinFile(path);
+		String enKey = ReadWrite.readLine(Data.KEYS + keyName);
+		String enPwCheck = ReadWrite.readLine(Data.KEYS + keyName, 2);
+		int[] bites = ReadWrite.readFileBin(path);
 		int[] biteKey = EncryptDecrypt.decryptKey(enKey, pw);
 		int[] sBiteKey = shortenKey(biteKey);
 		String pwCheck;
 		//check
-		ReadWrite.owriteLine(Data.LOC + keyName, "");
-		ReadWrite.writeBinFile(Data.LOC + keyName, EncryptDecrypt.decryptBin(Converstions.splitBigInt(new BigInteger(enPwCheck)), biteKey));
-		pwCheck = ReadWrite.readLine(Data.LOC + keyName);
+		ReadWrite.owriteLine(Data.TEMP, "");
+		ReadWrite.writeFileBin(Data.TEMP, EncryptDecrypt.decryptBin(Converstions.splitBigInt(new BigInteger(enPwCheck)), biteKey));
+		pwCheck = ReadWrite.readLine(Data.TEMP);
+		//clear
+		ReadWrite.owriteLine(Data.TEMP, "");
 		//encrypt
 		if(pwCheck.contains(pw))
 		{
 			bites = EncryptDecrypt.encryptBin(bites, biteKey);
 			bites = EncryptDecrypt.encryptBin(bites, sBiteKey);
 			ReadWrite.owriteLine(path, "");
-			ReadWrite.writeBinFile(path, bites);
+			ReadWrite.writeFileBin(path, bites);
 		}
 		else
 		{
 			System.out.println("Invalid password");
 		}
-		//rewrite
-		ReadWrite.owriteLine(Data.LOC + keyName, "");
-		ReadWrite.owriteLine(Data.LOC + keyName, enKey + "\n" + enPwCheck);
 	}
 	public static void decryptFile(String path, String keyName, String pw) throws IOException
 	{
 		//var
 		path = setPath(path);
-		String enKey = ReadWrite.readLine(Data.LOC + keyName);
-		String enPwCheck = ReadWrite.readLine(Data.LOC + keyName, 2);
-		int[] bites = ReadWrite.readBinFile(path);
+		String enKey = ReadWrite.readLine(Data.KEYS + keyName);
+		String enPwCheck = ReadWrite.readLine(Data.KEYS + keyName, 2);
+		int[] bites = ReadWrite.readFileBin(path);
 		int[] biteKey = EncryptDecrypt.decryptKey(enKey, pw);
 		int[] sBiteKey = shortenKey(biteKey);
 		String pwCheck;
 		//check
-		ReadWrite.owriteLine(Data.LOC + keyName, "");
-		ReadWrite.writeBinFile(Data.LOC + keyName, EncryptDecrypt.decryptBin(Converstions.splitBigInt(new BigInteger(enPwCheck)), biteKey));
-		pwCheck = ReadWrite.readLine(Data.LOC + keyName);
+		ReadWrite.owriteLine(Data.TEMP, "");
+		ReadWrite.writeFileBin(Data.TEMP, EncryptDecrypt.decryptBin(Converstions.splitBigInt(new BigInteger(enPwCheck)), biteKey));
+		pwCheck = ReadWrite.readLine(Data.TEMP);
+		//clear
+		ReadWrite.owriteLine(Data.TEMP, "");
 		//decrypt
 		if(pwCheck.contains(pw))
 		{
 			bites = EncryptDecrypt.decryptBin(bites, sBiteKey);
 			bites = EncryptDecrypt.decryptBin(bites, biteKey);
 			ReadWrite.owriteLine(path, "");
-			ReadWrite.writeBinFile(path, bites);
+			ReadWrite.writeFileBin(path, bites);
 		}
 		else
 		{
 			System.out.println("Invalid password");
 		}
-		//rewrite
-		ReadWrite.owriteLine(Data.LOC + keyName, "");
-		ReadWrite.owriteLine(Data.LOC + keyName, enKey + "\n" + enPwCheck);
 	}
 	
 	//resources

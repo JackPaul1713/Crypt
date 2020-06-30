@@ -1,5 +1,6 @@
 package resources;
 
+import java.io.IOException;
 import java.math.BigInteger;
 import java.nio.charset.StandardCharsets;
 import java.util.Base64;
@@ -7,32 +8,30 @@ import java.util.Base64;
 public class Converstions
 {
 	//converstions
-	public static String getStr(int[] intBites)
+	public static String getStr(int[] bites) throws IOException
 	{
 		//var
-		byte[] bites = new byte[intBites.length];
-		//convert
-		for(int i = 0; i < bites.length; i++)
-		{
-			bites[i] = (byte) intBites[i];
-		}
+		String str;
+		//getBytes
+		ReadWrite.owriteLine(Data.TEMP, "");
+		ReadWrite.writeFileBin(Data.TEMP, bites);
+		str = ReadWrite.readLine(Data.TEMP);
+		//cls
+		ReadWrite.owriteLine(Data.TEMP, "");
 		//ret
-		String str = new String(bites, StandardCharsets.UTF_8);
 		return(str);
 	}
-	public static int[] getBytes(String str)
+	public static int[] getBytes(String str) throws IOException
 	{
 		//var
-		byte[] bites = str.getBytes();
-		int[] intBites = new int[bites.length];
-			//byte[] bites = Base64.getDecoder().decode(str);
-			//int[] intBites = new int[bites.length];
-		//convert
-		for(int i = 0; i < bites.length; i++)
-		{
-			intBites[i] = bites[i] & 0xFF;
-		}
-		return(intBites);
+		int[] bites;
+		//getBytes
+		ReadWrite.owriteLine(Data.TEMP, str);
+		bites = ReadWrite.readFileBin(Data.TEMP);
+		//cls
+		ReadWrite.owriteLine(Data.TEMP, "");
+		//ret
+		return(bites);
 	}
 	public static BigInteger combineInts(int[] numbs)
 	{

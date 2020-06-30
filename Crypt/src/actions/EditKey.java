@@ -1,5 +1,6 @@
 package actions;
 
+import java.io.File;
 import java.io.IOException;
 import java.math.BigInteger;
 
@@ -15,28 +16,71 @@ public class EditKey
 	public static void genKey(String name, String pw, int size) throws IOException
 	{
 		//makeFile
-		FileMakeDelete.makeFile(Data.LOC + name);
+		FileMakeDelete.makeFile(Data.KEYS + name);
 		//genKey
 		int[] biteKey = genByteKey(size);
 		String key = EncryptDecrypt.encryptKey(biteKey, pw);
+		String pwCheck;
 		//genPwCheck
-		ReadWrite.owriteLine(Data.LOC + name, buffPw(pw));
-		String pwCheck = combineInts(EncryptDecrypt.encryptBin(ReadWrite.readBinFile(Data.LOC + name), biteKey));
+		ReadWrite.owriteLine(Data.KEYS + name, buffPw(pw));
+		pwCheck = combineInts(EncryptDecrypt.encryptBin(ReadWrite.readFileBin(Data.KEYS + name), biteKey));
 		//fillFile
-		ReadWrite.owriteLine(Data.LOC + name, key + "\n" + pwCheck);
+		ReadWrite.owriteLine(Data.KEYS + name, key + "\n" + pwCheck);
 	}
 	public static void remKey(String name) throws IOException
 	{
 		//wipe
-		ReadWrite.owriteLine(Data.LOC + name, "");
+		ReadWrite.owriteLine(Data.KEYS + name, "");
 		//rem
-		FileMakeDelete.delFile(Data.LOC + name);
+		FileMakeDelete.delFile(Data.KEYS + name);
+	}
+	
+	//changeKey
+	public static void changeName(String name, String newName)
+	{
+		File key = new File(Data.KEYS + name);
+		key.renameTo(new File(Data.KEYS + newName));
+	}
+	public static void changePw(String name, String oldPw, String newPw) throws IOException
+	{
+		//var
+		String key = ReadWrite.readLine(Data.KEYS + name);
+		int[] biteKey = EncryptDecrypt.decryptKey(key, oldPw);
+		String enOldPwCheck = ReadWrite.readLine(Data.KEYS + name, 2);
+		String oldPwCheck;
+		String newPwCheck;
+		//checkOld
+		ReadWrite.owriteLine(Data.TEMP, "");
+		ReadWrite.writeFileBin(Data.TEMP, EncryptDecrypt.decryptBin(Converstions.splitBigInt(new BigInteger(enOldPwCheck)), biteKey));
+		oldPwCheck = ReadWrite.readLine(Data.TEMP);
+		//clear
+		ReadWrite.owriteLine(Data.TEMP, "");
+		//fillFile
+		if(oldPwCheck.contains(oldPw))
+		{
+			//genNewPwCheck
+			ReadWrite.owriteLine(Data.TEMP, buffPw(newPw));
+			newPwCheck = combineInts(EncryptDecrypt.encryptBin(ReadWrite.readFileBin(Data.TEMP), biteKey));
+			key = EncryptDecrypt.encryptKey(biteKey, newPw);
+			ReadWrite.owriteLine(Data.KEYS + name, key + "\n" + newPwCheck);
+			//clear
+			ReadWrite.owriteLine(Data.TEMP, "");
+		}
+		else
+		{
+			System.out.println("Invalid password");
+		}
 	}
 
 	//dispKeys
-	public static void dispKeys()
+	public static void listKeys()
 	{
-		
+		File dir = new File(Data.KEYS);
+		File[] files = dir.listFiles(); 
+		for(File f: files)
+		{
+			System.out.println(f.getName());
+		}
 	}
 	
 	//generate
@@ -80,7 +124,7 @@ public class EditKey
 	}
 	private static String buffPw(String pw)
 	{
-		String buffPw = genRandomStr(21) + pw + genRandomStr(21);
+		String buffPw = genRandomStr(41) + pw + genRandomStr(41);
 		return(buffPw);
 	}
 	private static String genRandomStr(int len)

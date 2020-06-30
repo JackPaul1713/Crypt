@@ -1,5 +1,6 @@
 package resources;
 
+import java.io.IOException;
 import java.math.BigInteger;
 import resources.Data;
 
@@ -36,7 +37,7 @@ public class EncryptDecrypt
 	}
 	
 	//encryptDecryptKey
-	public static String encryptKey(int[] biteKey, String pw)
+	public static String encryptKey(int[] biteKey, String pw) throws IOException
 	{
 		//var
 		String enKey;
@@ -51,7 +52,7 @@ public class EncryptDecrypt
 		//ret
 		return(enKey);
 	}
-	public static int[] decryptKey(String enKey, String pw)
+	public static int[] decryptKey(String enKey, String pw) throws IOException
 	{
 		//var
 		BigInteger numbKey;
