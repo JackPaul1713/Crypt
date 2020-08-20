@@ -1,11 +1,11 @@
-package command;
+package launch;
 
 import actions.*;
 import resources.ReadWrite;
 
 import java.io.IOException;
 
-public class CryptCommand
+public class CLI
 {
 	public static void main(String[] args) throws IOException
 	{
