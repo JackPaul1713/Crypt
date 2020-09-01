@@ -2,7 +2,6 @@ package resources;
 
 import java.io.IOException;
 import java.math.BigInteger;
-import resources.Data;
 
 public class EncryptDecrypt
 {
