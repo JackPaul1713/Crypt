@@ -3,7 +3,7 @@ Command line extension for encrypting and decrypting files
 
 ## Description
 Crypt is a command line extention for encrypting and decrypting files. 
-It uses a very basic cypher and a symetric key, as well as a password. A password modified version of the key is stored localy. To use the key the password is used to decrypt the modified key. The key is then used with the basic cypher on the bytes from a file.
+It uses a very basic cypher and a symetric key, as well as a password. A password modified version of the key is stored localy. To use the key the password is used to decrypt the modified key. The key is then used with the basic cypher on bytes from a file.
 
 ## Installation
 Install Instructions:
